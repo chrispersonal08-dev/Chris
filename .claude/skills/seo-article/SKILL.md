@@ -1,6 +1,6 @@
 ---
 name: seo-article
-description: Write SEO articles for an office-furniture B2B foreign-trade site. Takes one keyword and produces a Table of Contents (Title + all H2s) for approval, then the full 2100-2500 word article in the locked house format (Intro / Key Takeaways / body H2-H3 / Conclusion / FAQs). Use whenever the user gives a keyword and asks for an SEO article, blog post, outline, or TOC — e.g. "写篇文章 office chair supplier", "SEO article for ergonomic office chair wholesale", "给这个关键词写个大纲".
+description: Write SEO articles for an office-furniture B2B foreign-trade site. Takes one keyword and outputs, in a single pass, the Table of Contents (Title + all H2s) followed by the full 2100-2500 word article in the locked house format (Intro / Key Takeaways / body H2-H3 / Conclusion / FAQs). Use whenever the user gives a keyword and asks for an SEO article, blog post, outline, or TOC — e.g. "写篇文章 office chair supplier", "SEO article for ergonomic office chair wholesale", "给这个关键词写个大纲".
 ---
 
 # SEO Article Workflow — Office Furniture B2B
@@ -9,26 +9,28 @@ Turn one keyword into a ranking article. The format below is **not a suggestion*
 Every rule in `references/format-spec.md` is a hard constraint, and the article is
 not finished until the self-check in that file passes.
 
-## The two-step contract
+## The contract
 
-This skill runs in **two steps with a stop in between**. Never merge them.
+One keyword in, **outline and finished article out in a single response**. Do not
+stop to ask for approval between them.
 
 ```
 INPUT: one keyword
   ↓
-STEP 1 — SERP research + Table of Contents  →  STOP, wait for user approval
-  ↓
-STEP 2 — full article
+PART 1 — SERP research + Table of Contents
+  ↓  (continue straight through, no pause)
+PART 2 — full article
 ```
 
-If the user's message contains an approved or edited outline, they are asking for
-Step 2 — skip Step 1 and write the article against that outline.
-If the user explicitly says "一次性" / "one shot" / "don't stop", run both steps
-in one response.
+Both parts always ship together. Two exceptions:
+
+- If the user asks for **only an outline / TOC / 大纲**, produce Part 1 and stop.
+- If the user's message already contains an outline to write against, skip the
+  research and go straight to Part 2 using their outline.
 
 ---
 
-## STEP 1 — SERP research and Table of Contents
+## PART 1 — SERP research and Table of Contents
 
 ### 1.1 Read the references first
 
@@ -70,7 +72,7 @@ From the SERP and the niche file, pick:
 
 ### 1.4 Output the TOC
 
-Emit exactly this, then **stop and ask for approval**:
+Emit exactly this, then continue straight into Part 2 in the same response:
 
 ```
 ## SERP Coverage
@@ -106,13 +108,18 @@ H2: FAQs
 [every competitor H2 topic → where it lands in this outline]
 ```
 
-Then: "确认大纲后我开始写正文。要改哪个 H2 直接说。"
-
 ---
 
-## STEP 2 — Write the article
+## PART 2 — Write the article
 
-Write the full article against the approved outline.
+Write the full article against the outline you just produced, in the same
+response. Separate it from Part 1 with a `---` rule and an `## Article` heading
+so the outline and the article are visually distinct.
+
+If the research in Part 1 forces a change to the outline while drafting (a
+section will not carry its word budget, two sections turn out to overlap), make
+the change and note it in one line after the article — do not silently ship an
+article that does not match the TOC above it.
 
 1. Follow the **section format plan** — the anti-monotony rules in
    `format-spec.md` §5 are the single most common failure. Vary the shape of
@@ -125,7 +132,8 @@ Write the full article against the approved outline.
 4. Run the self-check in `format-spec.md` §8. Report the real word count, the
    body H2 count vs N_max, and any rule you had to bend and why.
 
-Output the front matter block, then the article body in markdown (`##` / `###`).
+Output the article body in markdown (`##` / `###`). The front matter was already
+emitted in Part 1 — do not repeat it.
 
 ## Non-negotiables
 

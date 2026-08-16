@@ -51,7 +51,7 @@ competitor's own intro, key-takeaways, conclusion, and FAQ headings so the
 comparison is like-for-like.
 
 **When a fetch fails** (egress blocked, 403, JS-only page): try once more, then
-record it as `UNREAD` and continue. In the Step 1 output, name every UNREAD URL
+record it as `UNREAD` and continue. In the Part 1 output, name every UNREAD URL
 and state that coverage is verified against the pages actually read. Never
 substitute a guess.
 

@@ -15,14 +15,17 @@ or just say: `写一篇 SEO 文章，关键词 office chair supplier`
 
 ### How it runs
 
-1. **Step 1 — research + outline.** Searches Google for the keyword, fetches the
-   page-1 article competitors, extracts their H2s, and outputs the front matter
-   (Title / keywords / meta / slug), the full Table of Contents, a per-section
-   format and word plan, and a coverage check. **Then it stops for your approval.**
-2. **Step 2 — the article.** After you approve or edit the outline, it writes the
-   complete 2100-2500 word article and reports the self-check numbers.
+One pass, no approval stop. A single run outputs:
 
-Say "一次性" or "one shot" to skip the approval stop.
+1. **Research + outline.** Searches Google for the keyword, fetches the page-1
+   article competitors, extracts their H2s, and outputs the front matter
+   (Title / keywords / meta / slug), the full Table of Contents, a per-section
+   format and word plan, and a coverage check.
+2. **The article.** Immediately after, the complete 2100-2500 word article, plus
+   the self-check numbers.
+
+Ask for "只要大纲" / "outline only" if you want to stop after step 1, or paste
+your own outline to skip straight to the article.
 
 ## Files
 

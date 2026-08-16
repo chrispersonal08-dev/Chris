@@ -94,7 +94,7 @@ Across the whole article, all four of these are violations:
 
 ### 5.2 The five section formats
 
-Assign each body H2 one format in the Step 1 section plan:
+Assign each body H2 one format in the Part 1 section plan:
 
 | | Format | Shape |
 |---|---|---|
