@@ -5,32 +5,56 @@ a content mill.
 
 ---
 
-## 1. Brand profile
+## 1. Brand profile — Meet&Co
 
-> **FILL THIS IN.** Until these values are filled, write brand-neutral: no
-> company name, no product claims, and a generic closing CTA. Never invent a
-> company name, factory size, certification, or client.
+Verified from the company's own site. **Everything below may be stated in an
+article. Nothing outside this block may be claimed as fact about Meet&Co.**
 
 ```yaml
-company_name:      # e.g. "XX Furniture"
-website:           #
-factory_location:  # city / province
-years_in_business: #
-export_markets:    # e.g. North America, EU, Middle East, Southeast Asia
-certifications:    # ONLY ones actually held — BIFMA, EN 1335, ISO 9001, FSC, GREENGUARD
-moq_typical:       # e.g. 50 units per model
-lead_time_typical: # e.g. 25-35 days after deposit
-oem_odm:           # yes / no
+company_name:      Meet&Co Office Furniture
+website:           https://www.meetco-furniture.com/
+founded:           2007  (15+ years)
+factory_location:  Guangzhou, China
+showrooms:         Guangzhou and Singapore
+scale:             100K+ enterprise customers, 100+ cities served
+export_markets:    60+ countries — US, Europe, India, Japan, Middle East
+certifications:    ISO 9001, ISO 14001; "China Famous Brand"; 9S management
+                   # BIFMA / EN 1335 are NOT confirmed for Meet&Co — see below
+model:             factory-direct manufacturer (design + production + sales)
+services:          space planning → manufacturing → delivery → installation
+customization:     yes, fully customizable (OEM/ODM)
+warranty:          multi-year (do not state a specific number of years)
 product_lines:
-  - ergonomic task chairs
-  - executive chairs and desks
-  - workstations / cubicles / benching
-  - conference and meeting tables
-  - office sofas and reception seating
-  - filing cabinets and storage
-  - height-adjustable / sit-stand desks
-cta_style:         # RFQ | catalog download | sample request | none
+  - mesh office chairs / ergonomic task chairs
+  - leather and executive office chairs
+  - conference and meeting chairs
+  - gaming chairs
+  - plastic and stacking chairs
+  - workstations, partitions, office pods
+  - height-adjustable desks, computer and home-office desks
+  - office sofas and collaborative seating
+  - file and storage cabinets
+cta_style:         RFQ / request a quote
 ```
+
+### Verified product specs that may be cited
+
+| Product | Real specs from the site |
+|---|---|
+| Modern High Back Ergonomic Desk Chair | PP fiber frame, mesh back, high-density sponge, three-level pneumatic rod, 320 mm five-star base, PU wheels |
+| Modern Staff Mesh Chair | PP fiberglass mesh frame, imported mesh fabric, thickened seat cushion, 100% polyester wear-resistant fabric, SGS-certified gas lift |
+| Staff Mesh Office Chairs | Curved design reducing back tension, integrated-frame ergonomic back, special durable mesh |
+
+### Hard limits on Meet&Co claims
+
+- **Do not claim BIFMA X5.1 or EN 1335 certification.** Only ISO 9001 and
+  ISO 14001 are confirmed. BIFMA/EN may be discussed as industry standards
+  buyers should ask any supplier about — never as something Meet&Co holds.
+- **Do not invent** prices, MOQ numbers, lead times, warranty year counts,
+  factory square metres, staff counts, or awards.
+- **Do not invent model names.** Use the product names in the table above, or
+  describe a category ("Meet&Co's high-back mesh task chairs").
+- Link to real product URLs under `https://www.meetco-furniture.com/`.
 
 ## 2. Who is reading
 

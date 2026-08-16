@@ -61,7 +61,13 @@ Read all four before writing anything:
 | `references/format-spec.md` | Every structural rule + the final self-check |
 | `references/serp-research.md` | How to harvest and merge competitor H2s |
 | `references/office-furniture-b2b.md` | Brand profile, buyer personas, trade angles |
+| `references/listicle-rule.md` | **"Best X" roundups — 10+ named brands, Meet&Co first** |
 | `references/example-article.md` | The gold-standard exemplar to imitate |
+
+**If the keyword contains `best`, `top`, `brands`, `manufacturers`, `suppliers`,
+`reviews`, or otherwise asks "which one should I buy",
+`references/listicle-rule.md` is in force** — the article must name at least 10
+specific brands with Meet&Co first. Check this before outlining.
 
 ### 1.2 Harvest competitor H2s
 
@@ -168,5 +174,9 @@ emitted in Part 1 — do not repeat it.
   company names, or statistics. Write specifics the reader can act on; if you do
   not know a figure, describe the range or the mechanism instead of inventing a
   number.
+- **Meet&Co claims come only from the verified block** in
+  `office-furniture-b2b.md` §1. Ranking Meet&Co first is expected; inventing
+  evidence for it is not. Never claim BIFMA/EN 1335 for Meet&Co, never invent
+  model names, prices, MOQ, lead times, or "we tested N chairs".
 - **Never claim SERP coverage you did not verify.** A blocked fetch is reported,
   not papered over.
