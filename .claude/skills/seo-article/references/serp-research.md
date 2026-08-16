@@ -10,6 +10,19 @@ must cover topics from all four outlines.
 
 ---
 
+## 0. When the user supplies the competitors
+
+If the user pasted page-1 URLs, that list **replaces** §1 and §2 — no discovery
+search, no filtering. They are reading the real localized SERP for their target
+market; WebSearch is US-only and is not Google itself. For each URL, recover the
+exact article title with one scoped `WebSearch(allowed_domains:[domain])` before
+running the Method B pattern in §3 — Method B depends on having the exact title.
+
+If the user pasted the competitor **H2 lists**, skip §3 entirely. Their headings
+are verbatim ground truth: mark each `[user-supplied]`, compute `N_max` exactly,
+and **do not apply the +2 margin** from §5. Removing the margin means fewer,
+meatier sections instead of padded ones.
+
 ## 1. Search
 
 ```

@@ -28,6 +28,26 @@ Both parts always ship together. Two exceptions:
 - If the user's message already contains an outline to write against, skip the
   research and go straight to Part 2 using their outline.
 
+### Input modes
+
+The user may supply more than a keyword. Use whatever they give:
+
+| They give | Do this |
+|---|---|
+| Keyword only | Full research pass — find competitors via WebSearch, extract per §1.2 |
+| Keyword **+ page-1 URLs** | Skip competitor discovery; use their list verbatim as the competitor set. Still extract H2s per §1.2 — a URL does not make WebFetch work if egress is blocked, but it **sharpens Method B**: run one targeted `WebSearch(allowed_domains:[that domain])` to recover the article's exact title, then use that title in the Method B pattern |
+| Keyword **+ competitor H2 lists** | Best case. Skip extraction entirely. Use their headings verbatim, mark every competitor `[user-supplied]`, compute N_max exactly, and **drop the +2 search-derived margin** — no padding needed, so each section gets a fuller word budget |
+
+A user-supplied URL list **overrides** your own SERP results — they are looking
+at the real localized Google page for their target market; WebSearch is US-only
+and is not Google. Do not add competitors they did not list, and do not drop one
+because you judge it off-topic — ask instead.
+
+When the user supplies H2 lists in raw pasted form (Ahrefs/Surfer exports,
+rough Ctrl+F copies, mixed languages), normalize them yourself: strip
+navigation and related-post noise, drop their intro/takeaways/conclusion/FAQ
+headings for the like-for-like count, and do not ask the user to reformat.
+
 ---
 
 ## PART 1 — SERP research and Table of Contents
