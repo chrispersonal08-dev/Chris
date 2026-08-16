@@ -38,7 +38,11 @@ widen with one more search rather than proceeding on a thin sample.
 
 ## 3. Extract H2s
 
-For each competitor:
+Two methods. **Always try Method A first; fall back to Method B per URL.**
+Never skip a competitor — every page-1 article gets its headings extracted by
+one method or the other.
+
+### Method A — WebFetch (preferred, verbatim)
 
 ```
 WebFetch(url, "List every H2 heading on this page, verbatim and in order.
@@ -46,19 +50,65 @@ Exclude navigation, sidebar, footer, and related-post headings — body content
 only. Then give the approximate word count of the article body.")
 ```
 
-Record verbatim. Count **body** H2s the way this workflow counts them: exclude a
-competitor's own intro, key-takeaways, conclusion, and FAQ headings so the
-comparison is like-for-like.
+Gives exact, verbatim, complete headings. Use it whenever it works.
 
-**When a fetch fails** (egress blocked, 403, JS-only page): try once more, then
-record it as `UNREAD` and continue. In the Part 1 output, name every UNREAD URL
-and state that coverage is verified against the pages actually read. Never
-substitute a guess.
+### Method B — WebSearch heading extraction (fallback, validated)
 
-**When WebFetch is blocked for everything** (as in some sandboxed environments),
-stop and tell the user: coverage cannot be guaranteed, and offer the two real
-options — run the skill where network access is open, or paste the competitor H2
-outlines in directly.
+WebSearch runs on different infrastructure from WebFetch and **keeps working
+when outbound egress is blocked** (sandboxes, restricted corporate proxies,
+403-on-CONNECT policy denials). The search backend reads the page body, so it
+can return the section structure even when you cannot fetch the URL yourself.
+
+**The query pattern that works** — all three parts matter:
+
+```
+WebSearch(
+  query: "<the article's EXACT title words> headings sections table of contents",
+  allowed_domains: ["<competitor domain>"]
+)
+```
+
+Rules learned from testing this pattern:
+
+- **Use the article's exact title** from the SERP result. Generic queries
+  ("list every H2 on this page", the bare URL) return site boilerplate and
+  company blurbs instead of structure — they fail.
+- **`allowed_domains` is required.** Without it the results scatter across
+  other sites and the backend summarizes the wrong page.
+- **Never paste the raw URL as the query.** That returns Trustpilot reviews and
+  "about us" copy, not the article.
+
+**Run 2-3 queries per competitor**, each angled differently, then union the
+results:
+
+1. `<exact title> headings sections table of contents`
+2. `<exact title> what does the article cover main points`
+3. `<primary keyword> <a topic you expect deep in the article>` — pulls
+   sections the first two queries truncated
+
+### Method B's known limitation — and the margin it requires
+
+The search backend **paraphrases and compresses**. It returns the section
+structure faithfully but not always verbatim, and it under-reports: long
+articles come back with the tail sections missing.
+
+Therefore, when a competitor's headings came from Method B:
+
+- Treat the recovered headings as **topics, not verbatim H2s**.
+- **Add a +2 safety margin** to that competitor's H2 count before computing
+  `N_max`. Under-reporting is the failure mode, so bias upward.
+- Label the source in the coverage report: `[fetched]` vs `[search-derived +2]`.
+
+### Reporting honestly
+
+State in the Part 1 output which method produced each competitor's headings.
+Say `[search-derived]` where it applies — do not present paraphrased structure
+as a verbatim H2 list. If both methods fail for a URL, mark it `UNREAD`, name
+it, and say coverage is verified against the rest.
+
+Count **body** H2s the way this workflow counts them: exclude a competitor's own
+intro, key-takeaways, conclusion, and FAQ headings so the comparison is
+like-for-like.
 
 ## 4. Build the coverage matrix
 
@@ -99,7 +149,10 @@ lead-time planning. Count these toward the H2 total.
 ## 5. Compute the target
 
 ```
-N_max          = highest body-H2 count among competitors read
+per competitor:  count = body H2s found
+                 count += 2  if the headings were search-derived (Method B)
+
+N_max          = highest adjusted count among competitors
 body H2 target = max(7, N_max)   [+1-2 differentiator H2s]
 ```
 

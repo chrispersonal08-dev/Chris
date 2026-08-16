@@ -50,18 +50,23 @@ Follow `references/serp-research.md` exactly. In short:
 1. `WebSearch` the exact keyword.
 2. Pick the page-1 **article/blog** results (skip Amazon, marketplaces, pure
    category/product pages) — normally 4-8 of them.
-3. `WebFetch` each one for its verbatim H2 list and word count.
+3. Extract each one's H2s. **Try `WebFetch` first; if it fails for a URL, fall
+   back to the WebSearch extraction protocol** in `serp-research.md` §3 Method B
+   — it works even when outbound egress is blocked. Every competitor gets
+   extracted by one method or the other.
 4. Build the coverage matrix and compute **N_max** = the largest number of body
-   H2s any single competitor has.
+   H2s any single competitor has (+2 margin for search-derived counts).
 
 **The coverage rule:** the article's body H2 count must be `>= max(7, N_max)`,
 and the union of all competitor H2 topics must be covered — as an H2, or as an
 H3 nested under an H2 that subsumes it. Semantically duplicate competitor H2s
 merge into one H2 (see `serp-research.md` §4). Nothing gets silently dropped.
 
-If WebFetch is blocked or a page fails, say so explicitly and name the pages you
-could not read. Never invent a competitor outline and never claim coverage you
-did not verify.
+**Never abandon the coverage step because WebFetch is blocked** — that is what
+Method B is for. Only if *both* methods fail on a URL do you mark it `UNREAD`
+and name it. Label each competitor `[fetched]` or `[search-derived]` in the
+report. Never invent a competitor outline and never present paraphrased
+structure as a verbatim H2 list.
 
 ### 1.3 Choose the keywords
 

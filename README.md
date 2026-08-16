@@ -47,9 +47,18 @@ markets, real certifications, MOQ, lead time, product lines, CTA style. Until it
 is filled, articles are written brand-neutral with no CTA, and the skill will
 not invent company facts.
 
-## Network requirement
+## Competitor H2 extraction
 
-The H2-coverage guarantee depends on fetching page-1 competitor pages. Run this
-skill in an environment with open outbound network access (a local Claude Code
-session). In sandboxes where egress is restricted, WebFetch is blocked, the skill
-will say so, and you can paste competitor H2 outlines in manually instead.
+The H2-coverage rule needs the page-1 competitors' headings. The skill has two
+methods and always gets them:
+
+- **Method A — WebFetch.** Verbatim, complete headings. Used whenever the
+  network allows it.
+- **Method B — WebSearch extraction.** Runs on different infrastructure and
+  keeps working when outbound egress is blocked. Queries the article's exact
+  title scoped to its domain, 2-3 angles per page, and unions the results.
+  Because the search backend paraphrases and under-reports, search-derived
+  counts get a **+2 margin** before computing the target H2 count.
+
+Every competitor is labeled `[fetched]` or `[search-derived]` in the coverage
+report, so you can see how each outline was sourced.
