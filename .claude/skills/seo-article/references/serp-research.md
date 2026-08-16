@@ -175,9 +175,16 @@ coverage wins over word count, and thin sections are never the answer.
 
 ## 6. Also harvest from the SERP
 
-- **FAQ questions** — from "People also ask" and competitor FAQ blocks
-- **Secondary keywords** — recurring phrases in competitor titles and H2s
-- **Content gaps** — what every competitor states vaguely and you can state
-  concretely (specs, standards, tolerances, trade terms)
-- **Format signals** — if 3 of 5 competitors use a comparison table, the article
-  needs one
+What you can observe depends on how the headings were sourced. Do not claim an
+observation the method could not produce.
+
+| Signal | Method A (WebFetch) | Method B / user-supplied H2s |
+|---|---|---|
+| **FAQ questions** | Read competitor FAQ blocks directly | Available — run a separate `WebSearch` on the keyword and harvest "People also ask" style questions |
+| **Secondary keywords** | Full body text | Available from competitor titles and headings |
+| **Content gaps** | Read what they actually say, find the vague parts | **Not observable.** Headings show the skeleton, not the prose. Fall back to niche knowledge in `office-furniture-b2b.md` §3/§7 — pick topics where a manufacturer can be concrete (specs, standards, tolerances, trade terms) and assume generic competitors are vague there. State this as an assumption, not an observation |
+| **Format signals** | Count who uses tables, lists, H3s | **Not observable.** Do not assert "3 of 5 competitors use a table." Apply the house rule instead — `format-spec.md` §5.3 requires at least one comparison table regardless |
+
+When the user supplies H2 lists, the same limits apply: their headings are
+verbatim ground truth for **coverage**, but they carry no information about the
+competitors' body copy or formatting.
