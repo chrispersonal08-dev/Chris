@@ -10,7 +10,7 @@ Every rule here is binding. The article is not done until §8 passes.
 |---|---|
 | Target | **2100 - 2500** |
 | Hard floor | 2100 |
-| Stretch ceiling | **2800** — allowed *only* when SERP coverage forces more than 9 body H2s |
+| Stretch ceiling | **2800** — allowed when SERP coverage forces more than 9 body H2s, **or when `listicle-rule.md` is in force** (a 10+ brand roundup needs the room) |
 
 Word count = article body only (intro through the last FAQ answer). Front matter,
 headings-as-metadata, and the coverage report do not count.
